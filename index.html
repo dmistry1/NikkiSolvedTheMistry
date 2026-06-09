@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Deep &amp; Shree · Engagement</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="invite.css" />
+</head>
+<body>
+
+<!-- ============================================================
+     ENVELOPE STAGE
+============================================================ -->
+<section class="stage" id="stage" data-screen-label="Hero · envelope">
+  <div class="stage-pin">
+    <div class="stage-halo"></div>
+
+    <image-slot id="bot-peacock" class="botanical bot-bl" placeholder="Peacock art · PNG" fit="contain"></image-slot>
+    <image-slot id="bot-floral" class="botanical bot-tr" placeholder="Floral sprig · PNG" fit="contain"></image-slot>
+
+    <div class="stage-tagline">
+      <p class="eyebrow">You are warmly invited</p>
+    </div>
+
+    <div class="envelope-wrap" id="envWrap">
+      <div class="envelope" id="envelope">
+        <div class="env-shadow"></div>
+
+        <!-- the letter that rises -->
+        <div class="letter">
+          <div class="cartouche"></div>
+          <div class="letter-inner">
+            <div class="om l-om">ॐ</div>
+            <p class="eyebrow l-eyebrow">Together with their families</p>
+            <h1 class="l-names">Deep<span class="l-amp">&amp;</span>Shree</h1>
+            <p class="l-sub">are getting engaged</p>
+            <div class="rule center diamond" style="margin:.4rem 0"></div>
+            <p class="l-date">September 6, 2026</p>
+          </div>
+        </div>
+
+        <div class="env-back"></div>
+        <div class="env-front"></div>
+
+        <div class="env-address">
+          <p class="mono" data-mono>D &amp; S</p>
+          <span class="small">Leesburg · Virginia</span>
+        </div>
+
+        <div class="env-flap"></div>
+        <div class="seal om" data-seal>ॐ</div>
+      </div>
+    </div>
+
+    <div class="scroll-cue">
+      <p class="eyebrow">Scroll to open</p>
+      <div class="chev"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     MAIN
+============================================================ -->
+<main>
+
+  <!-- INTRO / COUPLE -->
+  <section class="section intro" data-screen-label="Intro · couple">
+    <div class="wrap intro-grid">
+      <div class="intro-copy reveal">
+        <p class="eyebrow">The happy couple</p>
+        <p class="lede script">Two families, one joyful beginning.</p>
+        <p>After many cherished moments together, <strong style="color:var(--ink)">Deep Mistry</strong> &amp; <strong style="color:var(--ink)">Shree Nikhita Kambhampati</strong> are delighted to celebrate their engagement — and we would be honoured to have you with us.</p>
+      </div>
+      <div class="couple-photo reveal d1">
+        <image-slot id="couple-hero" placeholder="Photo of Deep &amp; Shree" fit="cover"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENT DETAILS -->
+  <section class="section" data-screen-label="Event details">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow reveal">The celebration</p>
+        <h2 class="reveal d1">Event Details</h2>
+        <div class="rule center diamond reveal d2"></div>
+      </div>
+      <div class="details-grid">
+        <div class="detail-card reveal">
+          <div class="ic">✦</div>
+          <p class="tag">When</p>
+          <h3>Sunday</h3>
+          <p class="big">September 6, 2026</p>
+          <p>6:00 in the evening<br />Reception to follow</p>
+        </div>
+        <div class="detail-card reveal d1">
+          <div class="ic">✦</div>
+          <p class="tag">Where</p>
+          <h3>Droumavalla Farm</h3>
+          <p>14980 Limestone School Rd<br />Leesburg, VA 20176</p>
+        </div>
+        <div class="detail-card reveal d2">
+          <div class="ic">✦</div>
+          <p class="tag">Theme</p>
+          <h3>Pastel Royal</h3>
+          <p>Modern Indian elegance<br />in soft pastel tones</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COUNTDOWN -->
+  <section class="section countdown" data-screen-label="Countdown">
+    <div class="wrap center">
+      <div class="section-head">
+        <p class="eyebrow reveal">Counting the days</p>
+        <h2 class="reveal d1">Until We Celebrate</h2>
+      </div>
+      <div class="count-grid reveal d2" id="countdown" aria-live="polite">
+        <div class="count-cell"><div class="count-num" data-d>00</div><div class="count-label">Days</div></div>
+        <div class="count-sep">:</div>
+        <div class="count-cell"><div class="count-num" data-h>00</div><div class="count-label">Hours</div></div>
+        <div class="count-sep">:</div>
+        <div class="count-cell"><div class="count-num" data-m>00</div><div class="count-label">Minutes</div></div>
+        <div class="count-sep">:</div>
+        <div class="count-cell"><div class="count-num" data-s>00</div><div class="count-label">Seconds</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DRESS CODE -->
+  <section class="section" data-screen-label="Dress code">
+    <div class="wrap dress-grid">
+      <div class="reveal">
+        <div class="section-head" style="align-items:flex-start; text-align:left; margin-bottom:1.6rem">
+          <p class="eyebrow">What to wear</p>
+          <h2>Dress Code</h2>
+        </div>
+        <p class="dress-note"><strong>Pastel Royal — festive Indian attire.</strong> Think flowing silhouettes, soft peach, blush, cream and gold. Lehengas, sarees, sherwanis and kurtas all welcome; or a pastel suit if you prefer.</p>
+        <div class="swatches">
+          <div class="swatch"><div class="chip" style="background:#F3D4BE"></div><span>Peach</span></div>
+          <div class="swatch"><div class="chip" style="background:#FBF5EE"></div><span>Cream</span></div>
+          <div class="swatch"><div class="chip" style="background:#ECC8C1"></div><span>Blush</span></div>
+          <div class="swatch"><div class="chip" style="background:#B5786A"></div><span>Rose Gold</span></div>
+          <div class="swatch"><div class="chip" style="background:#C6A867"></div><span>Gold</span></div>
+        </div>
+      </div>
+      <div class="dress-art reveal d1">
+        <image-slot id="dress-ref" placeholder="Outfit inspiration (optional)" fit="cover"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY -->
+  <section class="section intro" data-screen-label="Gallery">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow reveal">A few of our favourite moments</p>
+        <h2 class="reveal d1">Us, Lately</h2>
+        <div class="rule center diamond reveal d2"></div>
+      </div>
+      <div class="gallery-grid reveal d1">
+        <image-slot id="g1" class="tall" placeholder="Photo 1" fit="cover"></image-slot>
+        <image-slot id="g2" placeholder="Photo 2" fit="cover"></image-slot>
+        <image-slot id="g3" placeholder="Photo 3" fit="cover"></image-slot>
+        <image-slot id="g4" class="wide" placeholder="Photo 4" fit="cover"></image-slot>
+        <image-slot id="g5" placeholder="Photo 5" fit="cover"></image-slot>
+        <image-slot id="g6" placeholder="Photo 6" fit="cover"></image-slot>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAP -->
+  <section class="section map" data-screen-label="Map · directions">
+    <div class="wrap map-grid">
+      <div class="map-copy reveal">
+        <p class="eyebrow">Find your way</p>
+        <h3 class="script">Droumavalla Farm</h3>
+        <p class="addr">14980 Limestone School Rd<br />Leesburg, Virginia 20176</p>
+        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=14980+Limestone+School+Rd+Leesburg+VA+20176" target="_blank" rel="noopener">Get Directions →</a>
+      </div>
+      <div class="map-frame reveal d1">
+        <svg class="roads" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
+          <g fill="none" stroke="#D9C7B2" stroke-width="6">
+            <path d="M-10 80 L180 120 L260 90 L420 140" />
+            <path d="M40 -10 L120 140 L90 320" />
+            <path d="M250 -10 L230 130 L300 320" />
+          </g>
+          <g fill="none" stroke="#E7D9C6" stroke-width="3">
+            <path d="M-10 200 L420 180" />
+            <path d="M160 30 L300 60" />
+          </g>
+        </svg>
+        <div class="pin"></div>
+        <div class="pin-label">Droumavalla Farm</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RSVP -->
+  <section class="section rsvp" data-screen-label="RSVP">
+    <div class="wrap">
+      <div class="panel reveal">
+        <div class="cartouche"></div>
+        <div class="om om-sm">ॐ</div>
+        <p class="eyebrow">Will you join us?</p>
+        <h2>Kindly RSVP</h2>
+        <p>We can’t wait to celebrate this milestone with the people we love. Please let us know if you’ll be joining us on the evening.</p>
+        <a class="btn" href="https://google.com" target="_blank" rel="noopener">RSVP on our Evite →</a>
+        <p class="deadline">Please respond by August 1, 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <footer data-screen-label="Footer">
+    <p class="mono script" data-mono>D &amp; S</p>
+    <p class="eyebrow">Deep &amp; Shree · 09 · 06 · 2026</p>
+    <p>With love and gratitude — we’ll see you there.</p>
+  </footer>
+</main>
+
+<!-- Tweaks mount -->
+<div id="tweaks-root"></div>
+
+<!-- scripts -->
+<script src="image-slot.js"></script>
+<script src="invite.js"></script>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script type="text/babel" src="tweaks-panel.jsx"></script>
+<script type="text/babel" src="tweaks-app.jsx"></script>
+
+</body>
+</html>
