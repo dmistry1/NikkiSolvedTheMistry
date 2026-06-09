@@ -79,4 +79,74 @@
   }, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
 
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+  /* ---------------- gallery fallbacks ---------------- */
+  document.querySelectorAll('.gallery-card img').forEach((img) => {
+    img.addEventListener('error', () => {
+      img.closest('.gallery-card')?.remove();
+    }, { once: true });
+  });
+
+  /* ---------------- RSVP form ---------------- */
+  const rsvpForm = document.getElementById('rsvpForm');
+  const rsvpStatus = document.getElementById('rsvpStatus');
+  if (rsvpForm && rsvpStatus) {
+    const scriptUrl = rsvpForm.dataset.scriptUrl;
+    const submitButton = rsvpForm.querySelector('button[type="submit"]');
+    const phoneInput = rsvpForm.querySelector('input[name="phone"]');
+
+    if (phoneInput) {
+      phoneInput.addEventListener('input', () => {
+        const digits = phoneInput.value.replace(/\D/g, '').slice(0, 10);
+        const area = digits.slice(0, 3);
+        const prefix = digits.slice(3, 6);
+        const line = digits.slice(6, 10);
+
+        if (digits.length > 6) {
+          phoneInput.value = `(${area}) ${prefix}-${line}`;
+        } else if (digits.length > 3) {
+          phoneInput.value = `(${area}) ${prefix}`;
+        } else if (digits.length > 0) {
+          phoneInput.value = `(${area}`;
+        } else {
+          phoneInput.value = '';
+        }
+      });
+    }
+
+    rsvpForm.addEventListener('submit', async (event) => {
+      event.preventDefault();
+
+      if (!scriptUrl || scriptUrl.includes('PASTE_GOOGLE_APPS_SCRIPT')) {
+        rsvpStatus.textContent = 'RSVP saving is not connected yet.';
+        rsvpStatus.className = 'form-status error';
+        return;
+      }
+
+      const formData = new FormData(rsvpForm);
+      if (formData.get('website')) return;
+      formData.append('submittedAt', new Date().toISOString());
+
+      rsvpStatus.textContent = 'Sending your RSVP...';
+      rsvpStatus.className = 'form-status';
+      if (submitButton) submitButton.disabled = true;
+
+      try {
+        await fetch(scriptUrl, {
+          method: 'POST',
+          mode: 'no-cors',
+          body: new URLSearchParams(formData)
+        });
+
+        rsvpForm.reset();
+        rsvpStatus.textContent = 'Thank you. Your RSVP has been received.';
+        rsvpStatus.className = 'form-status success';
+      } catch (error) {
+        rsvpStatus.textContent = 'Something went wrong. Please try again in a moment.';
+        rsvpStatus.className = 'form-status error';
+      } finally {
+        if (submitButton) submitButton.disabled = false;
+      }
+    });
+  }
 })();

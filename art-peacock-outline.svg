@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="520" viewBox="0 0 360 520" fill="none">
+  <defs>
+    <linearGradient id="peacockNeck" x1="157" y1="92" x2="183" y2="286" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#123947"/>
+      <stop offset=".48" stop-color="#1E6468"/>
+      <stop offset="1" stop-color="#3B8A78"/>
+    </linearGradient>
+    <linearGradient id="peacockTail" x1="89" y1="263" x2="134" y2="514" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#2E7169"/>
+      <stop offset=".48" stop-color="#6D9C7D"/>
+      <stop offset="1" stop-color="#B8CBB0"/>
+    </linearGradient>
+    <linearGradient id="peacockWing" x1="184" y1="231" x2="269" y2="334" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6A563C"/>
+      <stop offset=".46" stop-color="#D7C79B"/>
+      <stop offset="1" stop-color="#594838"/>
+    </linearGradient>
+  </defs>
+
+  <!-- trailing feather train -->
+  <path d="M160 271C93 294 51 347 33 430c-6 28-8 57-6 86 58-11 107-36 147-76 41-41 67-94 79-158-31-16-62-20-93-11Z" fill="url(#peacockTail)" opacity=".82"/>
+  <path d="M149 280C103 318 77 369 70 512" stroke="#1F5B5D" stroke-width="3" stroke-linecap="round"/>
+  <path d="M174 286C143 333 128 389 132 512" stroke="#4F8B72" stroke-width="3" stroke-linecap="round"/>
+  <path d="M199 292C185 345 187 400 208 500" stroke="#7EA889" stroke-width="3" stroke-linecap="round"/>
+  <path d="M123 299C82 336 58 389 53 504" stroke="#7EA889" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- feather eyes -->
+  <g opacity=".9">
+    <ellipse cx="54" cy="432" rx="8" ry="12" transform="rotate(32 54 432)" fill="#2F5F64"/>
+    <ellipse cx="54" cy="432" rx="4" ry="6" transform="rotate(32 54 432)" fill="#D6C1A0"/>
+    <circle cx="54" cy="432" r="2.2" fill="#203C70"/>
+
+    <ellipse cx="91" cy="472" rx="8" ry="12" transform="rotate(19 91 472)" fill="#2F5F64"/>
+    <ellipse cx="91" cy="472" rx="4" ry="6" transform="rotate(19 91 472)" fill="#D6C1A0"/>
+    <circle cx="91" cy="472" r="2.2" fill="#203C70"/>
+
+    <ellipse cx="124" cy="395" rx="8" ry="12" transform="rotate(21 124 395)" fill="#2F5F64"/>
+    <ellipse cx="124" cy="395" rx="4" ry="6" transform="rotate(21 124 395)" fill="#D6C1A0"/>
+    <circle cx="124" cy="395" r="2.2" fill="#203C70"/>
+
+    <ellipse cx="171" cy="430" rx="8" ry="12" transform="rotate(-6 171 430)" fill="#2F5F64"/>
+    <ellipse cx="171" cy="430" rx="4" ry="6" transform="rotate(-6 171 430)" fill="#D6C1A0"/>
+    <circle cx="171" cy="430" r="2.2" fill="#203C70"/>
+
+    <ellipse cx="211" cy="348" rx="8" ry="12" transform="rotate(-18 211 348)" fill="#2F5F64"/>
+    <ellipse cx="211" cy="348" rx="4" ry="6" transform="rotate(-18 211 348)" fill="#D6C1A0"/>
+    <circle cx="211" cy="348" r="2.2" fill="#203C70"/>
+  </g>
+
+  <!-- body and wing, tucked naturally above the train -->
+  <path d="M151 233c-22 24-27 57-13 89 17 37 56 54 102 43 34-8 61-30 81-66-25-31-59-52-101-64-29-9-52-9-69-2Z" fill="#2D5B5B"/>
+  <path d="M178 245c31 5 60 23 87 53-13 26-34 43-63 50-27-13-45-35-54-67 6-17 16-29 30-36Z" fill="url(#peacockWing)"/>
+  <path d="M181 259c10 29 28 54 54 74" stroke="#4B3D30" stroke-width="3" stroke-linecap="round"/>
+  <path d="M198 258c9 25 24 46 45 63" stroke="#F2E4BC" stroke-width="2" stroke-linecap="round"/>
+  <path d="M216 265c7 19 18 35 33 48" stroke="#776345" stroke-width="2" stroke-linecap="round"/>
+  <path d="M151 233c-22 24-27 57-13 89 17 37 56 54 102 43" stroke="#173B44" stroke-width="4" stroke-linecap="round"/>
+
+  <!-- slim curved neck -->
+  <path d="M168 236c-22-52-24-96-6-132 8-15 19-25 34-30 17 44 24 86 20 126-3 31-13 58-30 82-6-13-12-28-18-46Z" fill="url(#peacockNeck)"/>
+  <path d="M181 91c-14 31-14 67 0 108" stroke="#9FC0AA" stroke-width="3" stroke-linecap="round" opacity=".65"/>
+
+  <!-- small peacock head and beak -->
+  <path d="M173 72c14-13 36-13 50 0 12 12 13 31 2 45-12 15-35 18-51 6-16-12-17-37-1-51Z" fill="#173B44"/>
+  <path d="M220 86c19-5 37 0 53 14-19 4-36 2-51-7" fill="#173B44"/>
+  <circle cx="207" cy="88" r="4.2" fill="#F8F5F0"/>
+  <circle cx="208" cy="88" r="2" fill="#173B44"/>
+
+  <!-- crest -->
+  <g stroke="#173B44" stroke-width="2.8" stroke-linecap="round">
+    <path d="M185 70c-7-17-5-32 7-45"/>
+    <path d="M197 68c2-17 11-30 26-38"/>
+    <path d="M207 73c13-11 28-15 45-10"/>
+  </g>
+  <circle cx="192" cy="24" r="4" fill="#D6C1A0"/>
+  <circle cx="224" cy="30" r="4" fill="#D6C1A0"/>
+  <circle cx="253" cy="63" r="4" fill="#D6C1A0"/>
+
+  <!-- blossom branch crossing in front, like the reference -->
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M16 373c48-34 110-42 186-24" stroke="#6B5D51" stroke-width="4"/>
+    <path d="M68 362c11-31 35-48 71-50" stroke="#6B5D51" stroke-width="3"/>
+    <path d="M111 345c-3-25 7-45 30-61" stroke="#6B5D51" stroke-width="3"/>
+    <path d="M75 351c-25-9-49-6-72 8" stroke="#6B5D51" stroke-width="3"/>
+    <path d="M33 351c18-16 37-20 58-11" stroke="#D8B6B1" stroke-width="2.5"/>
+    <path d="M129 309c13-20 32-28 57-22" stroke="#D8B6B1" stroke-width="2.5"/>
+  </g>
+  <g fill="#F4D5D1" stroke="#B98683" stroke-width="1.4">
+    <ellipse cx="33" cy="349" rx="8" ry="4" transform="rotate(-25 33 349)"/>
+    <ellipse cx="48" cy="343" rx="8" ry="4" transform="rotate(22 48 343)"/>
+    <ellipse cx="57" cy="356" rx="8" ry="4" transform="rotate(70 57 356)"/>
+    <ellipse cx="129" cy="307" rx="8" ry="4" transform="rotate(-18 129 307)"/>
+    <ellipse cx="145" cy="302" rx="8" ry="4" transform="rotate(26 145 302)"/>
+    <ellipse cx="153" cy="316" rx="8" ry="4" transform="rotate(70 153 316)"/>
+  </g>
+</svg>
