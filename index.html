@@ -8,6 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Hanken+Grotesk:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="invite.css" />
+<link rel="preload" as="image" href="img/img1.JPG" />
+<link rel="preload" as="image" href="img/invitation-card.png" />
 </head>
 <body>
 
@@ -26,7 +28,7 @@
 
         <!-- the letter that rises -->
         <div class="letter">
-          <image-slot id="letter-bg" src="img/invitation-card.png" placeholder="Add invitation-card.png to project folder" fit="cover" shape="rect" radius="0" class="letter-bg-slot"></image-slot>
+          <img src="img/invitation-card.png" alt="" class="letter-bg-slot" />
           <div class="letter-overlay"></div>
           <div class="letter-inner">
             <p class="eyebrow l-eyebrow">|| Om Shri Ganeshay Namah ||</p>
@@ -76,7 +78,7 @@
         <p><strong style="color:var(--ink)">Maruti &amp; Bharathi Kambhampati</strong> and <strong style="color:var(--ink)">Ashish &amp; Nimisha Mistry</strong> joyfully announce the engagement of their children <strong style="color:var(--ink)">Nikhita</strong> and <strong style="color:var(--ink)">Deep</strong>, and would be honoured to have you join in the celebration.</p>
       </div>
       <div class="couple-photo reveal d1">
-        <image-slot id="couple-hero" src="img/img1.JPG" placeholder="Photo of Deep &amp; Shree" fit="cover"></image-slot>
+        <img src="img/img1.JPG" alt="Deep and Shree" class="couple-photo-img" />
       </div>
     </div>
   </section>
