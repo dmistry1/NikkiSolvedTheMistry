@@ -46,6 +46,35 @@
   window.addEventListener('resize', update);
   update();
 
+  /* ---------------- hero snap: one scroll opens, one scroll up closes ---- */
+  let heroAnimating = false;
+
+  function animateToY(targetY) {
+    if (heroAnimating) return;
+    heroAnimating = true;
+    window.scrollTo({ top: targetY, behavior: 'smooth' });
+    setTimeout(() => { heroAnimating = false; }, 1200);
+  }
+
+  function stageEnd() { return stage ? stage.offsetHeight - window.innerHeight : 0; }
+
+  function onIntent(deltaY) {
+    if (heroAnimating) return;
+    const atTop     = window.scrollY < 20;
+    const atStageEnd = Math.abs(window.scrollY - stageEnd()) < 40;
+
+    if (deltaY > 0 && atTop)      animateToY(stageEnd()); // open
+    if (deltaY < 0 && atStageEnd) animateToY(0);          // close
+  }
+
+  // wheel
+  window.addEventListener('wheel', (e) => onIntent(e.deltaY), { passive: true });
+
+  // touch
+  let _ty0 = 0;
+  window.addEventListener('touchstart', (e) => { _ty0 = e.touches[0].clientY; }, { passive: true });
+  window.addEventListener('touchend',   (e) => { onIntent(_ty0 - e.changedTouches[0].clientY); }, { passive: true });
+
   /* ---------------- countdown ---------------- */
   const TARGET = new Date('2026-09-06T18:00:00').getTime();
   const cd = document.getElementById('countdown');
@@ -56,16 +85,25 @@
     const elS = cd.querySelector('[data-s]');
     const pad = (n) => String(n).padStart(2, '0');
 
+    const pop = (el) => {
+      const cell = el.closest('.count-cell');
+      cell.classList.remove('pop');
+      void cell.offsetWidth;
+      cell.classList.add('pop');
+    };
+
+    let prev = {};
     function tick() {
       let diff = Math.max(0, TARGET - Date.now());
       const d = Math.floor(diff / 86400000); diff -= d * 86400000;
       const h = Math.floor(diff / 3600000);  diff -= h * 3600000;
       const m = Math.floor(diff / 60000);    diff -= m * 60000;
       const s = Math.floor(diff / 1000);
-      elD.textContent = pad(d);
-      elH.textContent = pad(h);
-      elM.textContent = pad(m);
-      elS.textContent = pad(s);
+      if (d !== prev.d) { elD.textContent = pad(d); pop(elD); }
+      if (h !== prev.h) { elH.textContent = pad(h); pop(elH); }
+      if (m !== prev.m) { elM.textContent = pad(m); pop(elM); }
+      if (s !== prev.s) { elS.textContent = pad(s); pop(elS); }
+      prev = { d, h, m, s };
     }
     tick();
     setInterval(tick, 1000);

@@ -6,7 +6,7 @@
 <title>Deep &amp; Shree · Engagement</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Great+Vibes&family=Hanken+Grotesk:wght@400;500;600;700&family=IM+Fell+English:ital@0;1&family=Noto+Serif+Devanagari:wght@500;600;700&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="invite.css" />
 </head>
 <body>
@@ -18,12 +18,7 @@
   <div class="stage-pin">
     <div class="stage-halo"></div>
 
-    <img class="line-art peacock-art hero-peacock" src="art-peacock-outline.svg" alt="" aria-hidden="true" />
-    <img class="line-art leaves-art hero-leaves" src="art-leaves-outline.svg" alt="" aria-hidden="true" />
 
-    <div class="stage-tagline">
-      <p class="eyebrow">You are warmly invited</p>
-    </div>
 
     <div class="envelope-wrap" id="envWrap">
       <div class="envelope" id="envelope">
@@ -31,11 +26,12 @@
 
         <!-- the letter that rises -->
         <div class="letter">
-          <div class="cartouche"></div>
+          <image-slot id="letter-bg" src="img/invitation-card.png" placeholder="Add invitation-card.png to project folder" fit="cover" shape="rect" radius="0" class="letter-bg-slot"></image-slot>
+          <div class="letter-overlay"></div>
           <div class="letter-inner">
-            <div class="om l-om">ॐ</div>
-            <p class="eyebrow l-eyebrow">Together with their families</p>
-            <h1 class="l-names">Deep<span class="l-amp">&amp;</span>Shree</h1>
+            <p class="eyebrow l-eyebrow">|| Om Shri Ganeshay Namah ||</p>
+            <p class="l-together">Together with their families</p>
+            <h1 class="l-names">Nikhita<br><span class="l-amp">&amp;</span><br>Deep</h1>
             <p class="l-sub">are getting engaged</p>
             <div class="rule center diamond" style="margin:.4rem 0"></div>
             <p class="l-date">September 6, 2026</p>
@@ -45,13 +41,17 @@
         <div class="env-back"></div>
         <div class="env-front"></div>
 
-        <div class="env-address">
-          <p class="mono" data-mono>D &amp; S</p>
-          <span class="small">Leesburg · Virginia</span>
-        </div>
+        <img class="env-florals" src="img/img17.png" alt="" aria-hidden="true" />
 
-        <div class="env-flap"></div>
-        <div class="seal om" data-seal>ॐ</div>
+
+
+        <div class="env-address">
+          <span class="small">Engagement · Invitation</span>
+        </div>
+        <div class="env-flap">
+          <img class="env-flap-florals" src="img/img17.png" alt="" aria-hidden="true" />
+        </div>
+        <div class="seal om" data-seal>N &amp; D</div>
       </div>
     </div>
 
@@ -73,7 +73,7 @@
       <div class="intro-copy reveal">
         <p class="eyebrow">The happy couple</p>
         <p class="lede script">Two families, one joyful beginning.</p>
-        <p>Together with their families, <strong style="color:var(--ink)">Maruti &amp; Bharathi Kambhampati</strong> and <strong style="color:var(--ink)">Ashish &amp; Nimisha Mistry</strong> are delighted to celebrate the engagement of <strong style="color:var(--ink)">Nikhita</strong> and <strong style="color:var(--ink)">Deep</strong> and we would be honoured to have you with us.</p>
+        <p><strong style="color:var(--ink)">Maruti &amp; Bharathi Kambhampati</strong> and <strong style="color:var(--ink)">Ashish &amp; Nimisha Mistry</strong> joyfully announce the engagement of their children <strong style="color:var(--ink)">Nikhita</strong> and <strong style="color:var(--ink)">Deep</strong>, and would be honoured to have you join in the celebration.</p>
       </div>
       <div class="couple-photo reveal d1">
         <image-slot id="couple-hero" src="img/img1.JPG" placeholder="Photo of Deep &amp; Shree" fit="cover"></image-slot>
@@ -82,13 +82,13 @@
   </section>
 
   <!-- EVENT DETAILS -->
-  <section class="section" data-screen-label="Event details">
+  <section class="section event-details-section" data-screen-label="Event details">
     <img class="line-art leaves-art section-leaves section-leaves-left" src="art-leaves-outline.svg" alt="" aria-hidden="true" />
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow reveal">The celebration</p>
         <h2 class="reveal d1">Event Details</h2>
-        <div class="rule center diamond reveal d2"></div>
+        <div class="orn-divider reveal d2" aria-hidden="true"><span>✦ &nbsp; ✦ &nbsp; ✦</span></div>
       </div>
       <div class="details-grid">
         <div class="detail-card reveal">
@@ -96,28 +96,159 @@
           <p class="tag">When</p>
           <h3>Sunday</h3>
           <p class="big">September 6, 2026</p>
-          <p>5:00 p.m.<br />Reception to follow</p>
-          <p class="fine">Dinner provided</p>
+          <p>5:00 p.m.</p>
+          <p class="fine">Please arrive sharply at 5:00 PM.</p>
         </div>
         <div class="detail-card reveal d1">
           <div class="ic">✦</div>
           <p class="tag">Where</p>
           <h3>Droumavalla Farm</h3>
           <p>14980 Limestone School Rd<br />Leesburg, VA 20176</p>
+          <div class="detail-map">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3103.5!2d-77.5!3d39.1!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89b64f0a0a0a0a0a%3A0x0!2s14980+Limestone+School+Rd%2C+Leesburg%2C+VA+20176!5e0!3m2!1sen!2sus!4v1"
+              width="100%" height="180" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Droumavalla Farm location">
+            </iframe>
+          </div>
+          <a class="hotel-link" href="https://www.google.com/maps/search/?api=1&query=14980+Limestone+School+Rd+Leesburg+VA+20176" target="_blank" rel="noopener">Get Directions →</a>
         </div>
+      </div>
+
+      <!-- Schedule of events -->
+      <div class="schedule-card reveal d2">
+        <div class="ic">✦</div>
+        <p class="tag">Schedule of Events</p>
+        <h3>Celebration Timeline</h3>
+        <ol class="timeline">
+          <li>
+            <span class="tl-time">5:00 PM</span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- diya flame -->
+                <path d="M8 10 C6.5 8 6.5 5.5 8 4 C9.5 5.5 9.5 8 8 10Z"/>
+                <path d="M4 12 Q8 14 12 12 L11.5 10.5 Q8 12 4.5 10.5Z"/>
+                <line x1="8" y1="10" x2="8" y2="11"/>
+              </svg>
+              Ganesh Pooja
+            </span>
+          </li>
+          <li>
+            <span class="tl-time"></span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- champagne flute -->
+                <path d="M6 2 L6.8 8 L5 11 L11 11 L9.2 8 L10 2Z"/>
+                <line x1="8" y1="11" x2="8" y2="14"/>
+                <line x1="6" y1="14" x2="10" y2="14"/>
+              </svg>
+              Welcome Reception
+            </span>
+          </li>
+          <li>
+            <span class="tl-time"></span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" aria-hidden="true">
+                <!-- two interlocking rings -->
+                <circle cx="5.5" cy="8" r="3.2"/>
+                <circle cx="10.5" cy="8" r="3.2"/>
+              </svg>
+              Ring Exchange
+            </span>
+          </li>
+          <li>
+            <span class="tl-time"></span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- cake with candle -->
+                <rect x="2" y="8" width="12" height="5" rx="1"/>
+                <line x1="5" y1="8" x2="5" y2="5"/>
+                <line x1="8" y1="8" x2="8" y2="4"/>
+                <line x1="11" y1="8" x2="11" y2="6"/>
+                <path d="M8 4 C7.5 3 8.5 2.5 8 2"/>
+              </svg>
+              Cake Cutting
+            </span>
+          </li>
+          <li>
+            <span class="tl-time"></span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- fork and knife -->
+                <line x1="5" y1="2" x2="5" y2="14"/>
+                <path d="M3 2 L3 6 Q5 7 7 6 L7 2"/>
+                <path d="M11 2 L11 5.5 Q13 7 11 8.5 L11 14"/>
+              </svg>
+              Dinner
+            </span>
+          </li>
+          <li>
+            <span class="tl-time"></span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- microphone -->
+                <rect x="5.5" y="2" width="5" height="7" rx="2.5"/>
+                <path d="M3 8.5 Q3 13 8 13 Q13 13 13 8.5"/>
+                <line x1="8" y1="13" x2="8" y2="15"/>
+                <line x1="6" y1="15" x2="10" y2="15"/>
+              </svg>
+              Speeches
+            </span>
+          </li>
+          <li>
+            <span class="tl-time"></span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- star -->
+                <polygon points="8,2 9.8,6.2 14.5,6.5 11,9.7 12.1,14.3 8,11.8 3.9,14.3 5,9.7 1.5,6.5 6.2,6.2"/>
+              </svg>
+              Performances
+            </span>
+          </li>
+          <li>
+            <span class="tl-time"></span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- two crossed dandiya sticks -->
+                <line x1="3" y1="2" x2="13" y2="14"/>
+                <line x1="13" y1="2" x2="3" y2="14"/>
+                <circle cx="3" cy="2" r="1.2"/>
+                <circle cx="13" cy="2" r="1.2"/>
+                <circle cx="3" cy="14" r="1.2"/>
+                <circle cx="13" cy="14" r="1.2"/>
+              </svg>
+              Garba &amp; Dandiya
+            </span>
+          </li>
+          <li>
+            <span class="tl-time"></span><span class="tl-dot"></span>
+            <span class="tl-event">
+              <svg class="tl-icon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <!-- music note -->
+                <line x1="9" y1="2" x2="9" y2="11"/>
+                <line x1="9" y1="2" x2="14" y2="3.5"/>
+                <line x1="14" y1="3.5" x2="14" y2="12"/>
+                <circle cx="7" cy="11" r="2"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+              Open Dance Floor
+            </span>
+          </li>
+        </ol>
       </div>
     </div>
   </section>
 
   <!-- DRESS CODE -->
-  <section class="section" data-screen-label="Dress code">
+  <section class="section dress-section" data-screen-label="Dress code">
     <div class="wrap dress-grid">
       <div class="reveal">
         <div class="section-head" style="align-items:flex-start; text-align:left; margin-bottom:1.6rem">
           <p class="eyebrow">What to wear</p>
           <h2>Dress Code</h2>
         </div>
-        <p class="dress-note"><strong>Pastel Royal — festive Indian attire.</strong> Think flowing silhouettes, sage, dusty rose, ivory and champagne gold. Lehengas, sarees, sherwanis and kurtas all welcome; or a pastel suit if you prefer.</p>
+        <p class="dress-note"><strong>Royal Indian Elegance</strong></p>
+        <p class="dress-note">We invite our guests to celebrate in festive Indian attire. Lehengas, cocktail sarees, and elegant Indian ensembles are encouraged for ladies, while sherwanis and Jodhpuri suits are preferred for gentlemen.</p>
+        <p class="dress-note" style="margin-top:.6rem">Dress to impress and join us for an evening of tradition, celebration, and timeless elegance.</p>
       </div>
       <div class="dress-inspo-grid reveal d1">
         <div class="dress-inspo-column">
@@ -142,58 +273,78 @@
     </div>
   </section>
 
+  <!-- HOTELS -->
+  <section class="section" data-screen-label="Hotels">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow reveal">Places to stay</p>
+        <h2 class="reveal d1">Hotel Options</h2>
+        <div class="orn-divider reveal d2" aria-hidden="true"><span>✦ &nbsp; ✦ &nbsp; ✦</span></div>
+      </div>
+      <div class="hotels-grid">
+        <div class="hotel-card reveal">
+          <div class="ic">✦</div>
+          <h3>Home2 Suites by Hilton</h3>
+          <p class="hotel-location">Leesburg, VA</p>
+          <p class="hotel-dist">~20 min away</p>
+          <a class="hotel-link" href="https://www.hilton.com/en/hotels/iadleht-home2-suites-leesburg/" target="_blank" rel="noopener">Book Now →</a>
+        </div>
+        <div class="hotel-card reveal d1">
+          <div class="ic">✦</div>
+          <h3>Hyatt Place Sterling</h3>
+          <p class="hotel-location">Sterling, VA · Near Airport</p>
+          <p class="hotel-dist">~30 min away</p>
+          <a class="hotel-link" href="https://www.hyatt.com/hyatt-place/en-US/iadzn-hyatt-place-sterling-dulles-airport-north" target="_blank" rel="noopener">Book Now →</a>
+        </div>
+        <div class="hotel-card reveal d2">
+          <div class="ic">✦</div>
+          <h3>DoubleTree by Hilton</h3>
+          <p class="hotel-location">Dulles, VA</p>
+          <p class="hotel-dist">~30 min away</p>
+          <a class="hotel-link" href="https://www.hilton.com/en/locations/usa/virginia/sterling/doubletree-by-hilton/" target="_blank" rel="noopener">Book Now →</a>
+        </div>
+        <div class="hotel-card reveal d3">
+          <div class="ic">✦</div>
+          <h3>Embassy Suites by Hilton</h3>
+          <p class="hotel-location">Dulles, VA</p>
+          <p class="hotel-dist">~30 min away</p>
+          <a class="hotel-link" href="https://www.hilton.com/en/hotels/wasdaes-embassy-suites-dulles-airport/" target="_blank" rel="noopener">Book Now →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- GALLERY -->
   <section class="section intro" data-screen-label="Gallery">
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow reveal">A few of our favourite moments</p>
         <h2 class="reveal d1">Us, Lately</h2>
-        <div class="rule center diamond reveal d2"></div>
+        <div class="orn-divider reveal d2" aria-hidden="true"><span>✦ &nbsp; ✦ &nbsp; ✦</span></div>
       </div>
       <div class="gallery-marquee reveal d1" aria-label="Photo slideshow">
         <div class="gallery-track">
-          <div class="gallery-card"><img src="img/img2.JPG" alt="Deep and Shree moment 2" /></div>
-          <div class="gallery-card featured"><img src="img/img3.png" alt="Deep and Shree moment 3" /></div>
-          <div class="gallery-card"><img src="img/img4.jpeg" alt="Deep and Shree moment 4" /></div>
           <div class="gallery-card"><img src="img/img5.jpeg" alt="Deep and Shree moment 5" /></div>
-          <div class="gallery-card"><img src="img/img6.jpg" alt="Deep and Shree moment 6" /></div>
+          <div class="gallery-card featured"><img src="img/img3.png" alt="Deep and Shree moment 3" /></div>
+          <div class="gallery-card"><img src="img/img9.JPG" alt="Deep and Shree moment 9" /></div>
           <div class="gallery-card featured"><img src="img/img7.jpeg" alt="Deep and Shree moment 7" /></div>
+          <div class="gallery-card"><img src="img/img1.JPG" alt="Deep and Shree moment 1" /></div>
+          <div class="gallery-card"><img src="img/img4.jpeg" alt="Deep and Shree moment 4" /></div>
           <div class="gallery-card featured"><img src="img/img8.JPG" alt="Deep and Shree moment 8" /></div>
-          <div class="gallery-card" aria-hidden="true"><img src="img/img2.JPG" alt="" /></div>
-          <div class="gallery-card featured" aria-hidden="true"><img src="img/img3.png" alt="" /></div>
-          <div class="gallery-card" aria-hidden="true"><img src="img/img4.jpeg" alt="" /></div>
+          <div class="gallery-card"><img src="img/img6.jpg" alt="Deep and Shree moment 6" /></div>
+          <div class="gallery-card"><img src="img/img2.JPG" alt="Deep and Shree moment 2" /></div>
+          <div class="gallery-card"><img src="img/img20.png" alt="Deep and Shree moment 20" /></div>
           <div class="gallery-card" aria-hidden="true"><img src="img/img5.jpeg" alt="" /></div>
-          <div class="gallery-card" aria-hidden="true"><img src="img/img6.jpg" alt="" /></div>
+          <div class="gallery-card featured" aria-hidden="true"><img src="img/img3.png" alt="" /></div>
+          <div class="gallery-card" aria-hidden="true"><img src="img/img9.JPG" alt="" /></div>
           <div class="gallery-card featured" aria-hidden="true"><img src="img/img7.jpeg" alt="" /></div>
+          <div class="gallery-card" aria-hidden="true"><img src="img/img1.JPG" alt="" /></div>
+          <div class="gallery-card" aria-hidden="true"><img src="img/img4.jpeg" alt="" /></div>
           <div class="gallery-card featured" aria-hidden="true"><img src="img/img8.JPG" alt="" /></div>
+          <div class="gallery-card" aria-hidden="true"><img src="img/img6.jpg" alt="" /></div>
+          <div class="gallery-card" aria-hidden="true"><img src="img/img2.JPG" alt="" /></div>
+          <div class="gallery-card" aria-hidden="true"><img src="img/img20.png" alt="" /></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- MAP -->
-  <section class="section map" data-screen-label="Map · directions">
-    <div class="wrap map-grid">
-      <div class="map-copy reveal">
-        <p class="eyebrow">Find your way</p>
-        <h3 class="script">Droumavalla Farm</h3>
-        <p class="addr">14980 Limestone School Rd<br />Leesburg, Virginia 20176</p>
-        <a class="btn ghost" href="https://www.google.com/maps/search/?api=1&query=14980+Limestone+School+Rd+Leesburg+VA+20176" target="_blank" rel="noopener">Get Directions →</a>
-      </div>
-      <div class="map-frame reveal d1">
-        <svg class="roads" viewBox="0 0 400 300" preserveAspectRatio="none" aria-hidden="true">
-          <g fill="none" stroke="#D6C1A0" stroke-width="6">
-            <path d="M-10 80 L180 120 L260 90 L420 140" />
-            <path d="M40 -10 L120 140 L90 320" />
-            <path d="M250 -10 L230 130 L300 320" />
-          </g>
-          <g fill="none" stroke="#E8CFCC" stroke-width="3">
-            <path d="M-10 200 L420 180" />
-            <path d="M160 30 L300 60" />
-          </g>
-        </svg>
-        <div class="pin"></div>
-        <div class="pin-label">Droumavalla Farm</div>
       </div>
     </div>
   </section>
@@ -232,7 +383,7 @@
             <legend>Can we save you a spot on the dance floor?</legend>
             <label class="choice-option">
               <input type="radio" name="attending" value="Yes" required />
-              <span>Absolutely, we’ll be there</span>
+              <span>Joyfully accepting!</span>
             </label>
             <label class="choice-option">
               <input type="radio" name="attending" value="Maybe" />
@@ -267,25 +418,37 @@
   <section class="section countdown" data-screen-label="Countdown">
     <div class="wrap center">
       <div class="section-head">
-        <p class="eyebrow reveal">Counting the days</p>
-        <h2 class="reveal d1">Until We Celebrate</h2>
+        <h2 class="reveal d1" style="font-family:var(--font-great); font-weight:400; letter-spacing:.04em;">Mark Your Calendar</h2>
       </div>
+      <div class="cal-links reveal">
+        <a class="cal-btn" href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Deep+%26+Nikhita%27s+Engagement&dates=20260906T210000Z%2F20260907T020000Z&details=Join+us+to+celebrate+the+engagement+of+Nikhita+%26+Deep.+Dinner+provided.&location=14980+Limestone+School+Rd%2C+Leesburg%2C+VA+20176" target="_blank" rel="noopener">
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="16" height="15" rx="2"/><line x1="2" y1="8" x2="18" y2="8"/><line x1="6" y1="1" x2="6" y2="5"/><line x1="14" y1="1" x2="14" y2="5"/></svg>
+          Google Calendar
+        </a>
+        <a class="cal-btn" href="engagement.ics" download>
+          <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="16" height="15" rx="2"/><line x1="2" y1="8" x2="18" y2="8"/><line x1="6" y1="1" x2="6" y2="5"/><line x1="14" y1="1" x2="14" y2="5"/></svg>
+          Apple Calendar
+        </a>
+      </div>
+      <p class="reveal" style="font-family:var(--font-great); font-size:clamp(1.4rem,3.5vw,2rem); font-weight:400; letter-spacing:.04em; color:var(--ink); margin:2rem 0 1.6rem;">The Celebration Begins In</p>
       <div class="count-grid reveal d2" id="countdown" aria-live="polite">
         <div class="count-cell"><div class="count-num" data-d>00</div><div class="count-label">Days</div></div>
-        <div class="count-sep">:</div>
         <div class="count-cell"><div class="count-num" data-h>00</div><div class="count-label">Hours</div></div>
-        <div class="count-sep">:</div>
         <div class="count-cell"><div class="count-num" data-m>00</div><div class="count-label">Minutes</div></div>
-        <div class="count-sep">:</div>
         <div class="count-cell"><div class="count-num" data-s>00</div><div class="count-label">Seconds</div></div>
       </div>
     </div>
   </section>
 
   <footer data-screen-label="Footer">
-    <p class="mono script" data-mono>D &amp; S</p>
-    <p class="eyebrow">Deep &amp; Shree · 09 · 06 · 2026</p>
-    <p>With love and gratitude — we’ll see you there.</p>
+
+    <p>With love and gratitude we’ll see you there.</p>
+    <p style="margin-top:1.8rem; font-size:.8rem; letter-spacing:.12em;">Feel free to reach out if you have any questions.</p>
+    <div class="footer-contact">
+      <a href="tel:4437608934">Deep &nbsp;·&nbsp; 443-760-8934</a>
+      <span class="footer-contact-sep">✦</span>
+      <a href="tel:4102946155">Nikhita &nbsp;·&nbsp; 410-294-6155</a>
+    </div>
   </footer>
 </main>
 

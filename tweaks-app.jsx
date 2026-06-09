@@ -7,7 +7,7 @@ const INVITE_TWEAKS = /*EDITMODE-BEGIN*/{
   "envTone": "peach",
   "motif": true,
   "damask": true,
-  "seal": "om",
+  "seal": "initials",
   "monogram": "D & S"
 }/*EDITMODE-END*/;
 
@@ -47,8 +47,8 @@ function applyTweaks(t) {
   const seal = document.querySelector('[data-seal]');
   if (seal) {
     if (t.seal === 'initials') {
-      seal.classList.remove('om');
-      seal.textContent = mono.replace(/\s+/g, '');
+      seal.classList.add('om');
+      seal.textContent = 'N & D';
     } else {
       seal.classList.add('om');
       seal.textContent = '\u0950';

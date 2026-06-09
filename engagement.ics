@@ -1,0 +1,14 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Deep & Nikhita Engagement//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+DTSTART:20260906T210000Z
+DTEND:20260907T020000Z
+SUMMARY:Deep & Nikhita's Engagement
+DESCRIPTION:Join us to celebrate the engagement of Nikhita & Deep. Dinner provided.
+LOCATION:Droumavalla Farm\, 14980 Limestone School Rd\, Leesburg\, VA 20176
+STATUS:CONFIRMED
+END:VEVENT
+END:VCALENDAR
