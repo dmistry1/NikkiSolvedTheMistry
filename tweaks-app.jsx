@@ -39,7 +39,7 @@ function applyTweaks(t) {
   r.style.setProperty('--font-display', FONTS[t.namesFont] || FONTS.serif);
 
   r.dataset.arch = t.motif ? 'on' : 'off';
-  r.style.setProperty('--damask', t.damask ? 'url("pattern.png")' : 'none');
+  if (t.damask) { r.style.removeProperty('--damask'); } else { r.style.setProperty('--damask', 'none'); }
 
   const mono = (t.monogram || 'D & S').trim();
   document.querySelectorAll('[data-mono]').forEach((el) => { el.textContent = mono; });
