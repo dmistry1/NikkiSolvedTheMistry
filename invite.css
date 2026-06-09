@@ -424,7 +424,16 @@ main{ position:relative; z-index:5; background:var(--damask) repeat, var(--cream
 .count-sep{ font-family:var(--font-display); font-size:clamp(2rem,6vw,4rem); color:var(--accent-2); align-self:flex-start; line-height:1.1; }
 
 /* dress code -------------------------------------------------------- */
-.dress-grid{ display:grid; grid-template-columns:.72fr 1.28fr; gap:clamp(2rem,5vw,4rem); align-items:center; }
+.dress-grid{ display:grid; gap:clamp(2rem,5vw,4rem); align-items:center; }
+.dress-grid > .reveal:first-child{
+  max-width:760px;
+  margin-inline:auto;
+  text-align:center;
+}
+.dress-grid > .reveal:first-child .section-head{
+  align-items:center !important;
+  text-align:center !important;
+}
 .dress-note{ font-size:clamp(1rem,1.4vw,1.15rem); line-height:1.7; color:var(--ink-soft); }
 .dress-note strong{ color:var(--ink); font-weight:600; }
 .dress-inspo-grid{
@@ -511,16 +520,6 @@ main{ position:relative; z-index:5; background:var(--damask) repeat, var(--cream
   from{ transform:translateX(0); }
   to{ transform:translateX(calc(-50% - clamp(.5rem,1vw,.75rem))); }
 }
-@media (prefers-reduced-motion:reduce){
-  .gallery-track{
-    width:100%;
-    overflow-x:auto;
-    animation:none;
-    scroll-snap-type:x proximity;
-  }
-  .gallery-card{ scroll-snap-align:center; }
-}
-
 /* map --------------------------------------------------------------- */
 .map{ background:var(--damask) repeat, linear-gradient(180deg,var(--cream),var(--cream-2)); }
 .map-grid{ display:grid; grid-template-columns:1fr 1.15fr; gap:clamp(2rem,5vw,4rem); align-items:center; }
@@ -767,10 +766,12 @@ footer p{ color:#C7B3A4; margin-top:1.2rem; font-size:.95rem; }
   .couple-photo{ max-width:460px; margin-inline:auto; }
   .details-grid{ grid-template-columns:1fr; max-width:460px; margin-inline:auto; }
   .dress-grid{ grid-template-columns:1fr; }
-  .dress-inspo-grid{ max-width:680px; margin-inline:auto; order:-1; }
+  .dress-inspo-grid{ max-width:680px; margin-inline:auto; }
   .map-grid{ grid-template-columns:1fr; }
   .form-grid,
   .rsvp-form fieldset{ grid-template-columns:1fr; }
+  .gallery-card{ flex-basis:clamp(260px,78vw,360px); }
+  .gallery-card.featured{ flex-basis:clamp(300px,86vw,420px); }
   .hero-peacock{ width:210px; left:-72px; opacity:.24; }
   .hero-leaves{ width:220px; right:-98px; top:12vh; opacity:.18; }
   .section-leaves,
