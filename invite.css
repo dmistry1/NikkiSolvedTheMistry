@@ -759,83 +759,63 @@ main{ position:relative; z-index:5; background:var(--damask), var(--cream); }
 
 .photo-wall{ position:relative; }
 
-/* string wire */
-.fairy-string{
-  position:relative;
-  display:flex;
-  align-items:flex-end;
-  justify-content:space-around;
-  padding:0 clamp(1rem,3vw,2rem);
-  height:36px;
-}
-.fairy-string::before{
-  content:'';
-  position:absolute;
-  top:10px; left:0; right:0;
-  height:2px;
-  background:linear-gradient(to right, transparent, rgba(140,110,55,.55) 6%, rgba(140,110,55,.55) 94%, transparent);
-}
-/* each bulb */
-.fairy-string .light{
-  position:relative;
-  width:9px; height:13px;
-  border-radius:50% 50% 58% 58%;
-  background:var(--lc, #ffe066);
-  box-shadow:0 0 7px 2px var(--lc, #ffe066), 0 0 18px 4px var(--lg, rgba(255,224,102,.35));
-  animation:twinkle var(--ld, 1.4s) ease-in-out var(--delay, 0s) infinite alternate;
-  flex-shrink:0;
-}
-/* cap on top of bulb */
-.fairy-string .light::before{
-  content:'';
-  position:absolute;
-  top:-7px; left:50%;
-  transform:translateX(-50%);
-  width:4px; height:8px;
-  background:rgba(120,90,40,.7);
-  border-radius:2px 2px 0 0;
-}
 
-/* photos */
-.photo-grid{
-  display:flex;
-  flex-wrap:wrap;
-  justify-content:center;
-  gap:clamp(.8rem,2vw,1.6rem);
-  padding:1rem clamp(1rem,4vw,3rem) 3rem;
+/* slideshow — horizontal sliding ───────────────────────────── */
+.slideshow-wrap{
+  position:relative;
+  margin:1.2rem auto 0;
 }
-.photo-item{
-  flex:0 0 clamp(130px,26vw,260px);
-  aspect-ratio:1/1;
-  border-radius:3px;
+.slideshow{
   overflow:hidden;
-  border:6px solid #fff;
-  box-shadow:
-    0 4px 12px rgba(58,46,34,.24),
-    0 14px 36px -10px rgba(58,46,34,.18);
-  transition:transform .25s ease, box-shadow .25s ease;
+  border-radius:12px;
 }
-.photo-item img{ display:block; width:100%; height:100%; object-fit:cover; }
+.slide-track{
+  display:flex;
+  transition:transform .6s cubic-bezier(.4,0,.2,1);
+  will-change:transform;
+}
+.slide{
+  flex:0 0 auto;
+  padding:0 .4rem;
+  box-sizing:border-box;
+}
+.slide img{
+  display:block; width:100%;
+  height:clamp(200px,38vw,380px);
+  object-fit:cover; border-radius:10px;
+  border:5px solid #fff;
+  box-shadow:0 6px 22px -8px rgba(58,46,34,.28);
+}
+@media(max-width:540px){
+  .slide img{ height:clamp(200px,72vw,320px); }
+}
 
-.photo-item:nth-child(1)  { transform:rotate(-4deg)  translateY(8px); }
-.photo-item:nth-child(2)  { transform:rotate(3deg)   translateY(-6px); }
-.photo-item:nth-child(3)  { transform:rotate(-2deg)  translateY(12px); }
-.photo-item:nth-child(4)  { transform:rotate(5deg)   translateY(-4px); }
-.photo-item:nth-child(5)  { transform:rotate(-5deg)  translateY(6px); }
-.photo-item:nth-child(6)  { transform:rotate(2deg)   translateY(-10px); }
-.photo-item:nth-child(7)  { transform:rotate(-3deg)  translateY(10px); }
-.photo-item:nth-child(8)  { transform:rotate(4deg)   translateY(-6px); }
-.photo-item:nth-child(9)  { transform:rotate(-1deg)  translateY(14px); }
-.photo-item:nth-child(10) { transform:rotate(6deg)   translateY(-8px); }
-.photo-item:hover{
-  transform:rotate(0deg) translateY(-6px) scale(1.05) !important;
-  box-shadow:0 18px 44px -8px rgba(58,46,34,.38);
-  z-index:2; position:relative;
+.slide-btn{
+  position:absolute; top:50%; transform:translateY(-50%);
+  width:38px; height:38px;
+  border:none; border-radius:50%;
+  background:rgba(255,255,255,.88);
+  color:var(--ink); font-size:1.4rem;
+  cursor:pointer; z-index:4;
+  box-shadow:0 2px 10px rgba(58,46,34,.18);
+  transition:background .2s, transform .2s;
+  display:flex; align-items:center; justify-content:center;
 }
-@media(max-width:600px){
-  .photo-item{ flex:0 0 clamp(120px,40vw,190px); border-width:4px; }
-  .fairy-string .light{ width:7px; height:11px; }
+.slide-btn:hover{ background:#fff; transform:translateY(-50%) scale(1.1); }
+.slide-prev{ left:-10px; }
+.slide-next{ right:-10px; }
+
+.slideshow-dots{
+  display:flex; justify-content:center;
+  gap:8px; margin-top:1.2rem;
 }
+.s-dot{
+  width:8px; height:8px; border-radius:50%;
+  border:none; padding:0; cursor:pointer;
+  background:color-mix(in oklab, var(--accent) 30%, transparent);
+  transition:background .3s, transform .3s;
+}
+.s-dot.active{ background:var(--accent); transform:scale(1.3); }
 
 /* map ─────────────────────────────────────────────────────── */
 .map{ background:var(--damask), linear-gradient(180deg,var(--cream),var(--cream-2)); }

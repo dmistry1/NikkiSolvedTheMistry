@@ -109,29 +109,6 @@
     setInterval(tick, 1000);
   }
 
-  /* ---------------- fairy lights ---------------- */
-  const fairyString = document.querySelector('.fairy-string');
-  if (fairyString) {
-    const palette = [
-      { c: '#ffe066', g: 'rgba(255,224,102,.4)' },
-      { c: '#ff6b6b', g: 'rgba(255,107,107,.4)' },
-      { c: '#7ee8fa', g: 'rgba(126,232,250,.4)' },
-      { c: '#90ee90', g: 'rgba(144,238,144,.4)' },
-      { c: '#f4a261', g: 'rgba(244,162,97,.4)'  },
-      { c: '#c77dff', g: 'rgba(199,125,255,.4)' },
-    ];
-    for (let i = 0; i < 26; i++) {
-      const { c, g } = palette[i % palette.length];
-      const el = document.createElement('span');
-      el.className = 'light';
-      el.style.setProperty('--lc', c);
-      el.style.setProperty('--lg', g);
-      el.style.setProperty('--delay', `${(i * 0.13).toFixed(2)}s`);
-      el.style.setProperty('--ld',    `${(1.1 + (i * 0.07) % 0.9).toFixed(2)}s`);
-      fairyString.appendChild(el);
-    }
-  }
-
   /* ---------------- scroll reveals ---------------- */
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
@@ -141,12 +118,67 @@
 
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-  /* ---------------- gallery fallbacks ---------------- */
-  document.querySelectorAll('.gallery-card img').forEach((img) => {
-    img.addEventListener('error', () => {
-      img.closest('.gallery-card')?.remove();
-    }, { once: true });
-  });
+  /* ---------------- slideshow ---------------- */
+  const ssEl = document.getElementById('photoSlideshow');
+  const dotsEl = document.querySelector('.slideshow-dots');
+  if (ssEl && dotsEl) {
+    const track = ssEl.querySelector('.slide-track');
+    const slides = Array.from(track.querySelectorAll('.slide'));
+    const wrap = ssEl.closest('.slideshow-wrap');
+    let idx = 0, timer;
+
+    function perView() {
+      return window.innerWidth >= 900 ? 3 : window.innerWidth >= 540 ? 2 : 1;
+    }
+
+    function setup() {
+      const pv = perView();
+      const w = ssEl.offsetWidth / pv;
+      slides.forEach(s => { s.style.width = w + 'px'; });
+      // rebuild dots for the number of "pages"
+      dotsEl.innerHTML = '';
+      const pages = slides.length - pv + 1;
+      for (let i = 0; i < pages; i++) {
+        const d = document.createElement('button');
+        d.className = 's-dot' + (i === 0 ? ' active' : '');
+        d.setAttribute('aria-label', 'Photo ' + (i + 1));
+        d.addEventListener('click', () => { goTo(i); reset(); });
+        dotsEl.appendChild(d);
+      }
+      idx = 0;
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(0)';
+    }
+
+    function goTo(n) {
+      const pv = perView();
+      const max = slides.length - pv;
+      idx = Math.max(0, Math.min(n, max));
+      // loop: if past end go to 0
+      if (n > max) idx = 0;
+      if (n < 0)   idx = max;
+      track.style.transition = '';
+      track.style.transform = `translateX(-${idx * slides[0].offsetWidth}px)`;
+      Array.from(dotsEl.children).forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    function reset() { clearInterval(timer); timer = setInterval(() => goTo(idx + 1), 3500); }
+
+    wrap.querySelector('.slide-prev').addEventListener('click', () => { goTo(idx - 1); reset(); });
+    wrap.querySelector('.slide-next').addEventListener('click', () => { goTo(idx + 1); reset(); });
+
+    let tx = 0;
+    ssEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; clearInterval(timer); }, { passive: true });
+    ssEl.addEventListener('touchend',   e => {
+      const dx = e.changedTouches[0].clientX - tx;
+      if (Math.abs(dx) > 40) goTo(dx < 0 ? idx + 1 : idx - 1);
+      reset();
+    }, { passive: true });
+
+    window.addEventListener('resize', () => { setup(); reset(); });
+    setup();
+    reset();
+  }
 
   /* ---------------- RSVP form ---------------- */
   const rsvpForm = document.getElementById('rsvpForm');
