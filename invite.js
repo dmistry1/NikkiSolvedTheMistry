@@ -109,6 +109,29 @@
     setInterval(tick, 1000);
   }
 
+  /* ---------------- fairy lights ---------------- */
+  const fairyString = document.querySelector('.fairy-string');
+  if (fairyString) {
+    const palette = [
+      { c: '#ffe066', g: 'rgba(255,224,102,.4)' },
+      { c: '#ff6b6b', g: 'rgba(255,107,107,.4)' },
+      { c: '#7ee8fa', g: 'rgba(126,232,250,.4)' },
+      { c: '#90ee90', g: 'rgba(144,238,144,.4)' },
+      { c: '#f4a261', g: 'rgba(244,162,97,.4)'  },
+      { c: '#c77dff', g: 'rgba(199,125,255,.4)' },
+    ];
+    for (let i = 0; i < 26; i++) {
+      const { c, g } = palette[i % palette.length];
+      const el = document.createElement('span');
+      el.className = 'light';
+      el.style.setProperty('--lc', c);
+      el.style.setProperty('--lg', g);
+      el.style.setProperty('--delay', `${(i * 0.13).toFixed(2)}s`);
+      el.style.setProperty('--ld',    `${(1.1 + (i * 0.07) % 0.9).toFixed(2)}s`);
+      fairyString.appendChild(el);
+    }
+  }
+
   /* ---------------- scroll reveals ---------------- */
   const io = new IntersectionObserver((entries) => {
     entries.forEach((e) => {
