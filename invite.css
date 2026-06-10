@@ -764,6 +764,21 @@ main{ position:relative; z-index:5; background:var(--damask), var(--cream); }
 }
 .gallery-marquee:hover .gallery-track{ animation-play-state:paused; }
 @media(hover:none){ .gallery-marquee:hover .gallery-track{ animation-play-state:running; } }
+
+/* mobile: replace CSS marquee with native swipe scroll */
+@media(max-width:768px){
+  .gallery-marquee{
+    overflow-x:auto; overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scroll-snap-type:x mandatory;
+    scrollbar-width:none;
+    padding:1rem 1rem 1.8rem;
+  }
+  .gallery-marquee::-webkit-scrollbar{ display:none; }
+  .gallery-track{ animation:none; }
+  .gallery-card{ scroll-snap-align:start; }
+  .gallery-card[aria-hidden="true"]{ display:none; }
+}
 .gallery-card{
   flex:0 0 clamp(320px,42vw,640px);
   aspect-ratio:16/10;
