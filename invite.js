@@ -118,67 +118,6 @@
 
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
-  /* ---------------- slideshow ---------------- */
-  const ssEl = document.getElementById('photoSlideshow');
-  const dotsEl = document.querySelector('.slideshow-dots');
-  if (ssEl && dotsEl) {
-    const track = ssEl.querySelector('.slide-track');
-    const slides = Array.from(track.querySelectorAll('.slide'));
-    const wrap = ssEl.closest('.slideshow-wrap');
-    let idx = 0, timer;
-
-    function perView() {
-      return window.innerWidth >= 900 ? 3 : window.innerWidth >= 540 ? 2 : 1;
-    }
-
-    function setup() {
-      const pv = perView();
-      const w = ssEl.offsetWidth / pv;
-      slides.forEach(s => { s.style.width = w + 'px'; });
-      // rebuild dots for the number of "pages"
-      dotsEl.innerHTML = '';
-      const pages = slides.length - pv + 1;
-      for (let i = 0; i < pages; i++) {
-        const d = document.createElement('button');
-        d.className = 's-dot' + (i === 0 ? ' active' : '');
-        d.setAttribute('aria-label', 'Photo ' + (i + 1));
-        d.addEventListener('click', () => { goTo(i); reset(); });
-        dotsEl.appendChild(d);
-      }
-      idx = 0;
-      track.style.transition = 'none';
-      track.style.transform = 'translateX(0)';
-    }
-
-    function goTo(n) {
-      const pv = perView();
-      const max = slides.length - pv;
-      idx = Math.max(0, Math.min(n, max));
-      // loop: if past end go to 0
-      if (n > max) idx = 0;
-      if (n < 0)   idx = max;
-      track.style.transition = '';
-      track.style.transform = `translateX(-${idx * slides[0].offsetWidth}px)`;
-      Array.from(dotsEl.children).forEach((d, i) => d.classList.toggle('active', i === idx));
-    }
-
-    function reset() { clearInterval(timer); timer = setInterval(() => goTo(idx + 1), 3500); }
-
-    wrap.querySelector('.slide-prev').addEventListener('click', () => { goTo(idx - 1); reset(); });
-    wrap.querySelector('.slide-next').addEventListener('click', () => { goTo(idx + 1); reset(); });
-
-    let tx = 0;
-    ssEl.addEventListener('touchstart', e => { tx = e.touches[0].clientX; clearInterval(timer); }, { passive: true });
-    ssEl.addEventListener('touchend',   e => {
-      const dx = e.changedTouches[0].clientX - tx;
-      if (Math.abs(dx) > 40) goTo(dx < 0 ? idx + 1 : idx - 1);
-      reset();
-    }, { passive: true });
-
-    window.addEventListener('resize', () => { setup(); reset(); });
-    setup();
-    reset();
-  }
 
   /* ---------------- RSVP form ---------------- */
   const rsvpForm = document.getElementById('rsvpForm');
