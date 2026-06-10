@@ -760,7 +760,7 @@ main{ position:relative; z-index:5; background:var(--damask), var(--cream); }
 .gallery-track{
   display:flex; width:max-content;
   gap:clamp(1rem,2vw,1.8rem);
-  animation:gallery-slide 62s linear infinite;
+  animation:gallery-slide 90s linear infinite;
 }
 .gallery-marquee:hover .gallery-track{ animation-play-state:paused; }
 @media(hover:none){ .gallery-marquee:hover .gallery-track{ animation-play-state:running; } }
