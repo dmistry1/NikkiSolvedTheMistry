@@ -151,6 +151,21 @@
       'img/img1.JPG','img/img2.JPG','img/img3.png','img/img4.jpeg','img/img5.jpeg',
       'img/img6.jpg','img/img7.jpeg','img/img8.JPG','img/img9.JPG','img/img20.png'
     ];
+    // randomize order on each load (Fisher–Yates), keeping img2 & img7 apart
+    const shuffle = () => {
+      for (let i = photos.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [photos[i], photos[j]] = [photos[j], photos[i]];
+      }
+    };
+    const apart = () => {
+      const a = photos.findIndex(s => /\/img2\./i.test(s));
+      const b = photos.findIndex(s => /\/img7\./i.test(s));
+      const gap = Math.abs(a - b);
+      // not adjacent, including the carousel's wrap-around
+      return gap !== 1 && gap !== photos.length - 1;
+    };
+    do { shuffle(); } while (!apart());
     const N = photos.length; // 10
     const VIS = 3;
     const track   = gallery.querySelector('.slide-track');
@@ -163,6 +178,11 @@
       const img = document.createElement('img');
       img.src = src;
       img.alt = 'Nikhita and Deep';
+      if (/\/img(5|9)\./i.test(src)) {
+        img.classList.add('feature');
+        slide.classList.add('slide-feature');
+        slide.style.backgroundImage = `url("${src}")`;
+      }
       if (i >= VIS) img.loading = 'lazy';
       slide.appendChild(img);
       track.appendChild(slide);
