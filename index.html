@@ -57,6 +57,10 @@
       </div>
     </div>
 
+    <button class="open-invite-btn" id="openInviteBtn" aria-label="Open invitation">
+      Open Invitation
+    </button>
+
     <div class="scroll-cue">
       <p class="eyebrow">Scroll to open</p>
       <div class="chev"></div>
@@ -318,17 +322,17 @@
         <h2 class="reveal d1">Us, Lately</h2>
         <div class="orn-divider reveal d2" aria-hidden="true"><span>✦ &nbsp; ✦ &nbsp; ✦</span></div>
       </div>
-      <div class="photo-collage reveal d1">
-        <div class="photo-item"><img src="img/img5.jpeg" alt="Deep and Shree moment 5" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img3.png" alt="Deep and Shree moment 3" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img9.JPG" alt="Deep and Shree moment 9" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img7.jpeg" alt="Deep and Shree moment 7" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img1.JPG" alt="Deep and Shree moment 1" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img4.jpeg" alt="Deep and Shree moment 4" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img8.JPG" alt="Deep and Shree moment 8" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img6.jpg" alt="Deep and Shree moment 6" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img2.JPG" alt="Deep and Shree moment 2" loading="lazy" /></div>
-        <div class="photo-item"><img src="img/img20.png" alt="Deep and Shree moment 20" loading="lazy" /></div>
+      <div class="slideshow reveal d1" id="gallerySlideshow">
+        <div class="slide-viewport">
+          <div class="slide-track"></div>
+          <button class="slide-arrow slide-prev" aria-label="Previous photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          </button>
+          <button class="slide-arrow slide-next" aria-label="Next photo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+          </button>
+        </div>
+        <div class="slide-dots"></div>
       </div>
     </div>
   </section>

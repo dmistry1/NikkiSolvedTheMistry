@@ -19,6 +19,7 @@
   let ticking = false;
   let stageTop = 0;
   let stageTotal = 0;
+  let animOverride = null; // null = use scroll; 0–1 = drive animation programmatically
 
   function measureStage() {
     if (!stage) return;
@@ -29,7 +30,7 @@
   function update() {
     ticking = false;
     if (!stage || stageTotal <= 0) return;
-    const p = clamp((window.scrollY - stageTop) / stageTotal, 0, 1);
+    const p = animOverride !== null ? animOverride : clamp((window.scrollY - stageTop) / stageTotal, 0, 1);
 
     const flap   = ease(span(p, 0.02, 0.34));
     const lift   = ease(span(p, 0.30, 0.82));
@@ -51,6 +52,30 @@
   window.addEventListener('resize', () => { measureStage(); update(); });
   measureStage();
   update();
+
+  /* ---------------- open invitation button ---------------- */
+  const openBtn = document.getElementById('openInviteBtn');
+  if (openBtn) {
+    openBtn.addEventListener('click', () => {
+      openBtn.disabled = true;
+      const duration = 1800;
+      const startTime = performance.now();
+
+      function animFrame(now) {
+        const t = Math.min((now - startTime) / duration, 1);
+        animOverride = ease(t);
+        update();
+        if (t < 1) {
+          requestAnimationFrame(animFrame);
+        } else {
+          animOverride = null;
+          window.scrollTo({ top: stageTop + stageTotal, behavior: 'instant' });
+          openBtn.disabled = false;
+        }
+      }
+      requestAnimationFrame(animFrame);
+    });
+  }
 
   /* ---------------- hero snap: desktop wheel only (mobile scrolls freely) --- */
   const isMobile = () => window.matchMedia('(hover:none)').matches;
@@ -118,6 +143,95 @@
 
   document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
 
+
+  /* ---------------- gallery carousel (3-up, infinite) ---------------- */
+  const gallery = document.getElementById('gallerySlideshow');
+  if (gallery) {
+    const photos = [
+      'img/img1.JPG','img/img2.JPG','img/img3.png','img/img4.jpeg','img/img5.jpeg',
+      'img/img6.jpg','img/img7.jpeg','img/img8.JPG','img/img9.JPG','img/img20.png'
+    ];
+    const N = photos.length; // 10
+    const VIS = 3;
+    const track   = gallery.querySelector('.slide-track');
+    const dotsEl  = gallery.querySelector('.slide-dots');
+
+    // Build track: [last VIS clones] + [all N photos] + [first VIS clones]
+    [...photos.slice(-VIS), ...photos, ...photos.slice(0, VIS)].forEach((src, i) => {
+      const slide = document.createElement('div');
+      slide.className = 'slide';
+      const img = document.createElement('img');
+      img.src = src;
+      img.alt = 'Nikhita and Deep';
+      if (i >= VIS) img.loading = 'lazy';
+      slide.appendChild(img);
+      track.appendChild(slide);
+    });
+
+    // Build dots
+    for (let i = 0; i < N; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', `Photo ${i + 1}`);
+      dotsEl.appendChild(dot);
+    }
+    const dots = dotsEl.querySelectorAll('.slide-dot');
+
+    let pos  = VIS; // index in padded sequence; VIS = first real slide
+    let busy = false;
+    let timer;
+    const pct = 100 / VIS; // percent per slide
+
+    function applyPos(animate) {
+      track.style.transition = animate ? 'transform .55s ease' : 'none';
+      if (!animate) void track.offsetWidth; // force reflow so snap is instant
+      track.style.transform = `translateX(${-pos * pct}%)`;
+    }
+
+    function updateDots() {
+      const ri = ((pos - VIS) % N + N) % N;
+      dots.forEach((d, i) => d.classList.toggle('active', i === ri));
+    }
+
+    function go(delta) {
+      if (busy) return;
+      busy = true;
+      pos += delta;
+      applyPos(true);
+      updateDots();
+    }
+
+    track.addEventListener('transitionend', (e) => {
+      if (e.propertyName !== 'transform') return;
+      if (pos >= VIS + N) { pos -= N; applyPos(false); }
+      else if (pos < VIS) { pos += N; applyPos(false); }
+      busy = false;
+    });
+
+    function startTimer() {
+      clearInterval(timer);
+      timer = setInterval(() => go(1), 5000);
+    }
+
+    gallery.querySelector('.slide-prev').addEventListener('click', () => { go(-1); startTimer(); });
+    gallery.querySelector('.slide-next').addEventListener('click', () => { go(1);  startTimer(); });
+
+    dots.forEach((dot, i) => dot.addEventListener('click', () => {
+      if (busy) return;
+      busy = true;
+      pos = VIS + i;
+      applyPos(true);
+      updateDots();
+      startTimer();
+    }));
+
+    gallery.addEventListener('mouseenter', () => clearInterval(timer));
+    gallery.addEventListener('mouseleave', startTimer);
+
+    applyPos(false);
+    updateDots();
+    startTimer();
+  }
 
   /* ---------------- RSVP form ---------------- */
   const rsvpForm = document.getElementById('rsvpForm');
