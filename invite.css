@@ -751,27 +751,47 @@ main{ position:relative; z-index:5; background:var(--damask), var(--cream); }
   background:color-mix(in oklab,var(--cream) 88%, #fff);
 }
 
-/* gallery grid ─────────────────────────────────────────────── */
+/* gallery — scattered photo wall ───────────────────────────── */
 .photo-grid{
-  display:grid;
-  grid-template-columns:repeat(3, 1fr);
-  gap:clamp(.6rem,1.5vw,1.2rem);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:clamp(1rem,2.5vw,2rem);
+  padding:2rem clamp(1rem,4vw,3rem) 3rem;
 }
 .photo-item{
+  flex:0 0 clamp(140px,28vw,280px);
   aspect-ratio:1/1;
-  border-radius:12px;
+  border-radius:4px;
   overflow:hidden;
-  border:1px solid color-mix(in oklab,var(--gold) 36%, #fff);
-  box-shadow:0 8px 24px -12px rgba(58,46,34,.36);
+  border:6px solid #fff;
+  box-shadow:
+    0 4px 12px rgba(58,46,34,.22),
+    0 12px 32px -8px rgba(58,46,34,.18);
+  transition:transform .25s ease, box-shadow .25s ease;
 }
 .photo-item img{
   display:block; width:100%; height:100%;
   object-fit:cover;
-  transition:transform .4s ease;
 }
-.photo-item:hover img{ transform:scale(1.04); }
+/* unique rotation + offset per photo for scattered feel */
+.photo-item:nth-child(1)  { transform:rotate(-4deg)  translateY(10px); }
+.photo-item:nth-child(2)  { transform:rotate(3deg)   translateY(-8px); }
+.photo-item:nth-child(3)  { transform:rotate(-2deg)  translateY(14px); }
+.photo-item:nth-child(4)  { transform:rotate(5deg)   translateY(-4px); }
+.photo-item:nth-child(5)  { transform:rotate(-6deg)  translateY(6px); }
+.photo-item:nth-child(6)  { transform:rotate(2deg)   translateY(-12px); }
+.photo-item:nth-child(7)  { transform:rotate(-3deg)  translateY(8px); }
+.photo-item:nth-child(8)  { transform:rotate(4deg)   translateY(-6px); }
+.photo-item:nth-child(9)  { transform:rotate(-1deg)  translateY(12px); }
+.photo-item:nth-child(10) { transform:rotate(6deg)   translateY(-10px); }
+.photo-item:hover{
+  transform:rotate(0deg) translateY(-4px) scale(1.04) !important;
+  box-shadow:0 16px 40px -8px rgba(58,46,34,.36);
+  z-index:2; position:relative;
+}
 @media(max-width:600px){
-  .photo-grid{ grid-template-columns:repeat(2,1fr); }
+  .photo-item{ flex:0 0 clamp(130px,42vw,200px); border-width:4px; }
 }
 
 /* map ─────────────────────────────────────────────────────── */
