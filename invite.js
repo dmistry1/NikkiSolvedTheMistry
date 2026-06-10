@@ -17,18 +17,23 @@
   const ease = (t) => t * t * (3 - 2 * t);
 
   let ticking = false;
+  let stageTop = 0;
+  let stageTotal = 0;
+
+  function measureStage() {
+    if (!stage) return;
+    stageTop = stage.offsetTop;
+    stageTotal = stage.offsetHeight - window.innerHeight;
+  }
 
   function update() {
     ticking = false;
-    if (!stage) return;
-    const vh = window.innerHeight;
-    const total = stage.offsetHeight - vh;          // scrollable distance while pinned
-    const p = clamp(-stage.getBoundingClientRect().top / total, 0, 1);
+    if (!stage || stageTotal <= 0) return;
+    const p = clamp((window.scrollY - stageTop) / stageTotal, 0, 1);
 
-    // phases
-    const flap   = ease(span(p, 0.02, 0.34));       // flap opens
-    const lift   = ease(span(p, 0.30, 0.82));       // letter rises + grows
-    const reveal = ease(span(p, 0.60, 0.98));       // names fade in
+    const flap   = ease(span(p, 0.02, 0.34));
+    const lift   = ease(span(p, 0.30, 0.82));
+    const reveal = ease(span(p, 0.60, 0.98));
 
     root.style.setProperty('--p', p.toFixed(4));
     root.style.setProperty('--flap', flap.toFixed(4));
@@ -43,12 +48,14 @@
   }
 
   window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', update);
+  window.addEventListener('resize', () => { measureStage(); update(); });
+  measureStage();
   update();
 
-  /* ---------------- hero snap: one scroll opens, one scroll up closes ---- */
-  let heroAnimating = false;
+  /* ---------------- hero snap: desktop wheel only (mobile scrolls freely) --- */
+  const isMobile = () => window.matchMedia('(hover:none)').matches;
 
+  let heroAnimating = false;
   function animateToY(targetY) {
     if (heroAnimating) return;
     heroAnimating = true;
@@ -56,24 +63,17 @@
     setTimeout(() => { heroAnimating = false; }, 1200);
   }
 
-  function stageEnd() { return stage ? stage.offsetHeight - window.innerHeight : 0; }
+  function stageEnd() { return stageTop + stageTotal; }
 
   function onIntent(deltaY) {
-    if (heroAnimating) return;
-    const atTop     = window.scrollY < 20;
+    if (heroAnimating || isMobile()) return;
+    const atTop      = window.scrollY < 20;
     const atStageEnd = Math.abs(window.scrollY - stageEnd()) < 40;
-
-    if (deltaY > 0 && atTop)      animateToY(stageEnd()); // open
-    if (deltaY < 0 && atStageEnd) animateToY(0);          // close
+    if (deltaY > 0 && atTop)      animateToY(stageEnd());
+    if (deltaY < 0 && atStageEnd) animateToY(0);
   }
 
-  // wheel
   window.addEventListener('wheel', (e) => onIntent(e.deltaY), { passive: true });
-
-  // touch
-  let _ty0 = 0;
-  window.addEventListener('touchstart', (e) => { _ty0 = e.touches[0].clientY; }, { passive: true });
-  window.addEventListener('touchend',   (e) => { onIntent(_ty0 - e.changedTouches[0].clientY); }, { passive: true });
 
   /* ---------------- countdown ---------------- */
   const TARGET = new Date('2026-09-06T18:00:00').getTime();

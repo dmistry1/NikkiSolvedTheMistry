@@ -177,6 +177,7 @@ body{
   perspective:1400px;
   z-index:3;
   transform: translateY(calc(var(--lift) * -3vh)) scale(calc(1 + var(--lift) * .02));
+  will-change:transform;
 }
 
 .envelope{ position:absolute; inset:0; transform-style:preserve-3d; }
