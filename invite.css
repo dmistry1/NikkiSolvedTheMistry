@@ -270,11 +270,12 @@ body{
 /* elegant modern letter typography */
 .letter .l-eyebrow{
   font-family:var(--font-body);
-  font-size:clamp(.36rem,.9vmin,.46rem);
+  font-size:clamp(.3rem,.72vmin,.38rem);
   font-weight:500;
   letter-spacing:.52em;
   color:var(--accent);
   text-transform:uppercase;
+  line-height:1.9;
 }
 .letter .l-together{
   font-family:var(--font-display);
@@ -283,6 +284,10 @@ body{
   font-size:clamp(.8rem,2.4vmin,1.1rem);
   color:#4a3c2e;
   letter-spacing:.08em;
+}
+/* "are getting engaged" — the line after the names */
+.letter .l-names + .l-together{
+  font-size:clamp(.62rem,1.8vmin,.85rem);
 }
 .letter .l-names{
   font-family:var(--font-great);
@@ -804,46 +809,26 @@ main{ position:relative; z-index:5; background:var(--damask), var(--cream); }
 .slide-viewport{
   position:relative;
   overflow:hidden;
-  border-radius:10px;
-  box-shadow:
-    0 0 0 1px color-mix(in oklab, var(--gold) 70%, #fff),   /* inner gold keyline */
-    0 0 0 11px var(--paper),                                /* cream mat */
-    0 0 0 12px color-mix(in oklab, var(--gold) 55%, #fff),  /* outer gold line */
-    0 24px 60px -26px rgba(58,46,34,.45);                   /* drop shadow */
 }
 
 .slide-track{
   display:flex;
-  height:clamp(180px,30vw,340px);
+  height:clamp(200px,32vw,360px);
   transition:transform .55s ease;
   will-change:transform;
 }
 
 .slide{
-  position:relative;
   flex:0 0 calc(100% / 3);
-  overflow:hidden;
+  padding:10px;
 }
 .slide img{
   display:block; width:100%; height:100%;
   object-fit:cover;
-  position:relative; z-index:1;
-}
-/* horizontal photos shown whole, with a blurred fill behind the letterbox bands */
-.slide-feature{
-  background-size:cover;
-  background-position:center;
-}
-.slide-feature::before{
-  content:'';
-  position:absolute; inset:-8%;
-  background-image:inherit;
-  background-size:cover; background-position:center;
-  filter:blur(16px) brightness(.92) saturate(1.05);
-  z-index:0;
-}
-.slide img.feature{
-  object-fit:contain;
+  border-radius:14px;
+  box-shadow:
+    0 0 0 1px color-mix(in oklab, var(--gold) 55%, #fff),
+    0 16px 40px -22px rgba(58,46,34,.5);
 }
 
 .slide-arrow{
@@ -1024,8 +1009,8 @@ footer .mono{ font-family:var(--font-display); font-size:2.8rem; color:var(--pea
 footer .eyebrow{ color:var(--peach-2); margin-top:1.2rem; opacity:.82; }
 footer p{ color:#C7B3A4; margin-top:1.4rem; font-size:.95rem; line-height:1.82; }
 .footer-contact{
-  display:flex; align-items:center; justify-content:center;
-  flex-wrap:wrap; gap:.6rem 1.2rem;
+  display:flex; flex-direction:column; align-items:center; justify-content:center;
+  gap:.6rem;
   margin-top:1.6rem;
   font-size:.76rem; letter-spacing:.16em; text-transform:uppercase;
 }
