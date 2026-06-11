@@ -466,7 +466,7 @@ body{
   opacity:0; transition:opacity .5s ease, transform .5s ease;
 }
 .post-open-cue.is-visible{ opacity:1; transform:translateX(-50%) translateY(0); }
-.post-open-cue .eyebrow{ color:var(--ink-faint); }
+.post-open-cue .eyebrow{ color:#fff; font-size:clamp(.82rem,2.4vw,1.02rem); text-shadow:0 1px 8px rgba(0,0,0,.45); }
 .post-open-cue .chev{
   width:11px; height:11px; margin:8px auto 0;
   border-right:1.5px solid var(--accent); border-bottom:1.5px solid var(--accent);
