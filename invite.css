@@ -459,6 +459,21 @@ body{
 }
 @keyframes bob{ 0%,100%{ transform:rotate(45deg) translateY(0);} 50%{ transform:rotate(45deg) translateY(5px);} }
 
+/* cue that appears once the invitation has been opened */
+.post-open-cue{
+  position:fixed; left:50%; bottom:4vh; transform:translateX(-50%) translateY(10px);
+  text-align:center; z-index:60; pointer-events:none;
+  opacity:0; transition:opacity .5s ease, transform .5s ease;
+}
+.post-open-cue.is-visible{ opacity:1; transform:translateX(-50%) translateY(0); }
+.post-open-cue .eyebrow{ color:var(--ink-faint); }
+.post-open-cue .chev{
+  width:11px; height:11px; margin:8px auto 0;
+  border-right:1.5px solid var(--accent); border-bottom:1.5px solid var(--accent);
+  transform:rotate(45deg);
+  animation:bob 1.8s ease-in-out infinite;
+}
+
 .stage-tagline{
   position:absolute; top:16vh; left:50%; transform:translateX(-50%);
   text-align:center; z-index:4; opacity:calc(1 - var(--p,0)*2);

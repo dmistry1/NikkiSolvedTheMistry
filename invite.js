@@ -55,6 +55,26 @@
 
   /* ---------------- open invitation button ---------------- */
   const openBtn = document.getElementById('openInviteBtn');
+  const postCue = document.getElementById('postOpenCue');
+
+  function showPostOpenCue() {
+    if (!postCue) return;
+    const baseY = window.scrollY;
+    postCue.classList.add('is-visible');
+    const hideCue = () => {
+      if (Math.abs(window.scrollY - baseY) > 60) {
+        postCue.classList.remove('is-visible');
+        window.removeEventListener('scroll', hideCue);
+      }
+    };
+    window.addEventListener('scroll', hideCue, { passive: true });
+    // fall back to auto-hiding after a while
+    setTimeout(() => {
+      postCue.classList.remove('is-visible');
+      window.removeEventListener('scroll', hideCue);
+    }, 9000);
+  }
+
   if (openBtn) {
     openBtn.addEventListener('click', () => {
       openBtn.disabled = true;
@@ -71,6 +91,7 @@
           animOverride = null;
           window.scrollTo({ top: stageTop + stageTotal, behavior: 'instant' });
           openBtn.disabled = false;
+          showPostOpenCue();
         }
       }
       requestAnimationFrame(animFrame);
